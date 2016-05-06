@@ -1,0 +1,30 @@
+<div class='row'>
+  <div class='col-sm-6 col-sm-offset-3'>
+    <h2 class='text-center'>Change Your Password</h2>
+    <hr>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <%= f.hidden_field :reset_password_token %>
+
+      <div class='form-group'>
+        <%= f.label :password, 'New Password' %><br />
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :password_confirmation, 'New Password (again)' %><br />
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.submit 'Change My Password', class: 'btn btn-success' %>
+      </div>
+
+      <div class='form-group'>
+        <%= render 'devise/shared/links' %>
+      </div>
+    <% end %>
+  </div>
+</div>
