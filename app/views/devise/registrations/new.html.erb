@@ -7,6 +7,16 @@
       <%= devise_error_messages! %>
 
       <div class='form-group'>
+        <%= f.label :first_name, 'First Name' %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :last_name, 'Last Name' %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+
+      <div class='form-group'>
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control' %>
       </div>
@@ -19,6 +29,11 @@
       <div class='form-group'>
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.check_box :subscribe %>
+        <%= f.label :subscribe, 'Subscribe to Newsletter?' %>
       </div>
 
       <div class='form-group'>
