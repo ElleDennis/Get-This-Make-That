@@ -1,0 +1,5 @@
+<% if @comment.valid? %>
+  $('#<%= dom_id(@comment.commentable) %> .listing-comments').append('<%=j render @comment %>');
+<% else %>
+  $('#<%= dom_id(@comment.commentable) %> .listing-new-comment').prepend('<div class="alert alert-danger text-center">Sorry! We were not able to save your comment.</div>');
+<% end %>

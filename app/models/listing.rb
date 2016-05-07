@@ -3,6 +3,8 @@ class Listing < ActiveRecord::Base
 
   validates_presence_of :title, :content, :state, :zipcode
 
+  acts_as_commentable
+
   scope :active, -> do
     where('created_at > ?', 3.weeks.ago).
       order(created_at: :desc)

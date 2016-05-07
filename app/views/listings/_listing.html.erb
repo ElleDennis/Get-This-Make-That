@@ -1,4 +1,4 @@
-<div class='row'>
+<div class='row' id='<%= dom_id(listing) %>'>
   <div class='col-sm-6 col-sm-offset-3'>
     <div class='panel panel-default'>
       <div class='panel-heading'>
@@ -24,6 +24,33 @@
         <div class='listing-title'><%= listing.title %></div>
         <div class='listing-location'><%= icon('map-marker') %> <%= listing.state %> <%= listing.zipcode %></div>
         <div class='listing-content'><%= listing.content %></div>
+
+        <hr>
+
+        <div class='listing-comments'>
+          <% if params[:id].present? || listing.comments.size <= 5 %>
+            <%= render listing.comments %>
+          <% else %>
+            <div class='comment'>
+              <%= link_to "view all #{pluralize(listing.comments.count, 'comment')}", listing_path(listing), class: 'view-all' %>
+            </div>
+            <%= render listing.comments.last(5) %>
+          <% end %>
+        </div>
+
+        <div class='listing-new-comment'>
+          <%= form_for Comment.new, remote: true do |f| %>
+            <%= f.hidden_field :commentable_type, value: 'Listing' %>
+            <%= f.hidden_field :commentable_id, value: listing.id %>
+            <div class='form-group'>
+              <%= f.text_area :comment, class: 'form-control' %>
+            </div>
+            <div class='form-group'>
+              <%= f.submit class: 'btn btn-sm btn-success' %>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>

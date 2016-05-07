@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'kaminari'
+gem 'acts_as_commentable'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
