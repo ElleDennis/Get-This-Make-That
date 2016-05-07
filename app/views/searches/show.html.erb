@@ -1,0 +1,9 @@
+<% if @listings.present? %>
+  <%= render @listings %>
+
+  <div class='text-center'>
+    <%= paginate @listings %>
+  </div>
+<% else %>
+  <h3 class='text-center'>We couldn't find any results found for '<%= params[:zipcode] %>'.</h3>
+<% end %>

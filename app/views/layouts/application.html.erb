@@ -67,6 +67,20 @@
     </div>
   <% end %>
 
+  <% if !devise_controller? %>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <form role="search" action="/search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search Listings by ZIP Code" name="zipcode">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <hr>
+  <% end %>
+
   <% if user_signed_in? %>
     <div class='new-nav text-center'>
       <%= link_to new_listing_path, class: 'btn btn-default' do %>
