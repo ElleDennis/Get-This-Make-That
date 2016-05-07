@@ -29,6 +29,9 @@ nav.navbar {
     background: #ffffff;
   }
 
+}
+
+[id*="listing_"] {
   .panel-body {
     padding: 0;
 
@@ -48,9 +51,15 @@ nav.navbar {
   }
 }
 
-.listing-title {
+.listing-title,
+.request-title {
   font-size: 16px;
   font-weight: 700;
+}
+
+.listing-content,
+.request-content {
+  margin: 10px 0;
 }
 
 .listing-location {
@@ -60,19 +69,8 @@ nav.navbar {
   color: #a5a7aa;
 }
 
-.listing-content {
-  margin: 10px 0;
-}
-
-.listing-preview {
-  margin-top: 10px;
-
-  img {
-    width: 100%;
-  }
-}
-
-.listing-comments {
+.listing-comments,
+.request-comments {
   margin-bottom: 15px;
 
   a.view-all {

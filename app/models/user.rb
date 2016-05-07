@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :listings
+  has_many :requests
   has_many :comments
 
   validates_presence_of :first_name, :last_name

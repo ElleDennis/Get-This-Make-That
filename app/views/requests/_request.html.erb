@@ -1,0 +1,53 @@
+<div class='row' id='<%= dom_id(request) %>'>
+  <div class='col-sm-6 col-sm-offset-3'>
+    <div class='panel panel-default'>
+      <div class='panel-heading'>
+        <div class='row'>
+          <div class='col-sm-6'>
+            <%= request.user.first_name %>
+          </div>
+          <div class='col-sm-6 text-right'>
+            <span class='created_at'><%= link_to time_ago_in_words(request.created_at), request_path(request) %></span>
+            <% if user_signed_in? && current_user == request.user %>
+              &nbsp;
+              <%= link_to icon('wrench'), edit_request_path(request) %>
+              &nbsp;
+              <%= link_to icon('trash-o'), request_path(request), method: :delete, data: { confirm: 'Are you sure you want to delete this Listing?'} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class='panel-body'>
+        <div class='request-title'><%= request.title %></div>
+        <div class='request-content'><%= request.content %></div>
+
+        <hr>
+
+        <div class='request-comments'>
+          <% if params[:id].present? || request.comments.size <= 5 %>
+            <%= render request.comments %>
+          <% else %>
+            <div class='comment'>
+              <%= link_to "view all #{pluralize(request.comments.count, 'comment')}", request_path(request), class: 'view-all' %>
+            </div>
+            <%= render request.comments.last(5) %>
+          <% end %>
+        </div>
+
+        <div class='request-new-comment'>
+          <%= form_for Comment.new, remote: true do |f| %>
+            <%= f.hidden_field :commentable_type, value: 'Request' %>
+            <%= f.hidden_field :commentable_id, value: request.id %>
+            <div class='form-group'>
+              <%= f.text_area :comment, class: 'form-control' %>
+            </div>
+            <div class='form-group'>
+              <%= f.submit class: 'btn btn-sm btn-success' %>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
