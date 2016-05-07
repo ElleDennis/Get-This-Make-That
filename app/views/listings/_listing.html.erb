@@ -4,7 +4,7 @@
       <div class='panel-heading'>
         <div class='row'>
           <div class='col-sm-6'>
-            Me
+            <%= listing.user.first_name %>
           </div>
           <div class='col-sm-6 text-right'>
             <span class='created_at'><%= link_to time_ago_in_words(listing.created_at), listing_path(listing) %></span>

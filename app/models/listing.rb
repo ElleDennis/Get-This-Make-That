@@ -1,4 +1,6 @@
 class Listing < ActiveRecord::Base
+  belongs_to :user
+
   validates_presence_of :title, :content, :state, :zipcode
 
   scope :active, -> do
