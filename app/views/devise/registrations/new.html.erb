@@ -4,7 +4,7 @@
     <hr>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <%= display_form_errors resource %>
 
       <div class='form-group'>
         <%= f.label :first_name, 'First Name' %>

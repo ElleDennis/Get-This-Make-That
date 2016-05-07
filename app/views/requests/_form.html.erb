@@ -1,15 +1,7 @@
 <div class='row'>
   <div class='col-sm-6 col-sm-offset-3'>
     <%= form_for request do |f| %>
-      <% if request.errors.any? %>
-        <div class='alert alert-danger'>
-          <ul>
-            <% request.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= display_form_errors request %>
 
       <div class='form-group'>
         <%= f.label :title %>
