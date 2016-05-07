@@ -28,6 +28,12 @@
         <hr>
 
         <div class='listing-comments'>
+          <% if listing.comments.blank? %>
+            <div class='comment view-all'>
+              No comments yet. Be the first to leave a comment.
+            </div>
+          <% end %>
+
           <% if params[:id].present? || listing.comments.size <= 5 %>
             <%= render listing.comments %>
           <% else %>

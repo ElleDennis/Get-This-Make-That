@@ -74,15 +74,15 @@ nav.navbar {
 .request-comments {
   margin-bottom: 15px;
 
-  a.view-all {
+  .view-all,
+  a.view_all {
     font-weight: 400;
-
     color: #a5a7aa;
+  }
 
-    &:hover {
-      color: #818488;
-      text-decoration: none;
-    }
+  a.view-all:hover {
+    color: #818488;
+    text-decoration: none;
   }
 
   .comment {
