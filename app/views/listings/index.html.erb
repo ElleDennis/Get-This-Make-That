@@ -1,6 +1,11 @@
-<div class='new-listing text-center'>
-    <%= link_to icon('camera'), new_listing_path %>
-</div>
+<% if user_signed_in? %>
+  <div class='new-listing text-center'>
+    <%= link_to new_listing_path do %>
+      <%= icon('camera') %>
+      Add Listing
+    <% end %>
+  </div>
+<% end %>
 
 <%= render @listings %>
 

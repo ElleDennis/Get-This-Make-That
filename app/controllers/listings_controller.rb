@@ -1,14 +1,16 @@
 class ListingsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @listings = Listing.active.page(params[:page])
   end
 
   def new
-    @listing = Listing.new
+    @listing = current_user.listings.build
   end
 
   def create
-    @listing = Listing.new(model_params)
+    @listing = current_user.listings.build(model_params)
 
     if @listing.save
       redirect_to @listing, notice: 'You have successfully created a Listing!'
@@ -18,11 +20,11 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
   end
 
   def update
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
 
     if @listing.update(model_params)
       redirect_to @listing, notice: 'You have successfully updated a Listing!'
@@ -36,7 +38,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     @listing.destroy
 
     redirect_to listings_path
@@ -45,6 +47,6 @@ class ListingsController < ApplicationController
   private
 
   def model_params
-    params.require(:listing).permit(:title, :content, :state, :zipcode, :image_url)
+    params.require(:listing).permit(:title, :content, :state, :zipcode, :image_url, :user_id)
   end
 end
