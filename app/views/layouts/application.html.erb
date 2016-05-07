@@ -61,7 +61,24 @@
     </div>
   <% end %>
 
-  <%= yield %>
+  <% if user_signed_in? %>
+    <div class='new-nav text-center'>
+      <%= link_to new_listing_path, class: 'btn btn-default' do %>
+        <%= icon('paint-brush') %>
+        New Listing
+      <% end %>
+      <%= link_to new_request_path, class: 'btn btn-default' do %>
+        <%= icon('comment') %>
+        New Request
+      <% end %>
+    </div>
+
+    <hr>
+  <% end %>
+
+  <div class='container-content'>
+    <%= yield %>
+  </div>
 </div>
 
 </body>
