@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   def index
-    @listings = Listing.page(params[:page]).per(5)
+    @listings = Listing.active.page(params[:page])
   end
 
   def new
