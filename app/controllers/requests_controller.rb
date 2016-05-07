@@ -44,6 +44,12 @@ class RequestsController < ApplicationController
     redirect_to requests_path
   end
 
+  def mine
+    @requests = current_user.requests.active.page(params[:page])
+
+    render :index
+  end
+
   private
 
   def model_params

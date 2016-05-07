@@ -44,6 +44,12 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
+  def mine
+    @listings = current_user.listings.active.page(params[:page])
+
+    render :index
+  end
+
   private
 
   def model_params

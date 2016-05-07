@@ -36,6 +36,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+          <li><%= link_to 'My Listings', mine_listings_path %></li>
+          <li><%= link_to 'My Requests', mine_requests_path %></li>
           <li><%= link_to 'My Profile', edit_user_registration_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %>
