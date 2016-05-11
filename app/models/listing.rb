@@ -1,7 +1,7 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :title, :content, :state, :zipcode
+  validates_presence_of :image_url, :title, :content, :state, :zipcode
 
   acts_as_commentable
 
