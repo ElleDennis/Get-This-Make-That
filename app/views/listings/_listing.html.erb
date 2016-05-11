@@ -22,7 +22,7 @@
       </div>
       <div class='panel-footer'>
         <div class='listing-title'><%= listing.title %></div>
-        <div class='listing-location'><%= icon('map-marker') %> <%= listing.state %> <%= listing.zipcode %></div>
+        <div class='listing-location'><%= icon('map-marker') %> <%= display_us_state(listing.state) %> <%= listing.zipcode %></div>
         <div class='listing-content'><%= listing.content %></div>
 
         <hr>
