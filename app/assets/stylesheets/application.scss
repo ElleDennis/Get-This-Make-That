@@ -6,6 +6,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
 
 body {
+  padding-top: 50px;
+
   background-color: #fafafa;
 
   font-family: 'Open Sans';
@@ -13,8 +15,7 @@ body {
 }
 
 nav.navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #edeeee;
+  font-style: italic;
 }
 
 .new-nav {
@@ -22,6 +23,17 @@ nav.navbar {
     margin: 0 10px;
     font-size: 20px;
   }
+}
+
+.jumbotron .container {
+  position: relative;
+}
+
+.alert {
+  position: absolute;
+  top: -50px;
+  width: 100%;
+  z-index: 2000;
 }
 
 .panel {

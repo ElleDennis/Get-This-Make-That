@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -41,7 +41,7 @@
           <li><%= link_to 'My Profile', edit_user_registration_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign Up to Post', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <% end %>
       </ul>
@@ -49,45 +49,55 @@
   </div>
 </nav>
 
-<div class="container">
-  <% if flash[:notice] %>
-    <div class="alert alert-info">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-  <% if flash[:error] || flash[:alert] %>
-    <div class="alert alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <%= flash[:error] || flash[:alert]  %>
-    </div>
-  <% end %>
+<% if !devise_controller? %>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <% if flash[:notice] %>
+        <div class="alert alert-info">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:error] || flash[:alert] %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= flash[:error] || flash[:alert]  %>
+        </div>
+      <% end %>
 
-  <% if !devise_controller? %>
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <form role="search" action="/search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search Listings by ZIP Code" name="zipcode">
-          </div>
-        </form>
+      <h3>
+        Post & Part with
+        <span class='text-muted'>or</span>
+        Cruise & Nab
+      </h3>
+      <h3>FREE Leftover or Unwanted Home Improvement Materials</h3>
+      <br>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <form role="search" action="/search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search Listings by ZIP Code" name="zipcode">
+            </div>
+          </form>
+        </div>
       </div>
     </div>
+  </div>
+<% end %>
 
-    <hr>
-  <% end %>
+<div class="container">
 
   <% if user_signed_in? %>
     <div class='new-nav text-center'>
-      <%= link_to new_listing_path, class: 'btn btn-default' do %>
+      <%= link_to new_listing_path, class: 'btn btn-primary' do %>
         <%= icon('paint-brush') %>
         New Construction Materials Listing
       <% end %>
-      <%= link_to new_request_path, class: 'btn btn-default' do %>
+      <%= link_to new_request_path, class: 'btn btn-warning' do %>
         <%= icon('comment') %>
         New Construction Materials Request
       <% end %>
