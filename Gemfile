@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'acts_as_commentable'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'rails_admin'
 
 gem 'puma'
 gem 'rails_12factor', group: :production
